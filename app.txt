@@ -1,0 +1,10 @@
+"StAuth10244: I Jonghwan Lee, 000811948 certify that this material is my original work. No other person's work has been used without due acknowledgement. I have not made my work available to anyone else."
+
+# This application is for someone who wants to find accommodations in Hamilton
+
+# This application has two more features we did not go over with in-class examples.
+One is providing the direction options of walking, bicycling, transit as well as driving. 
+You can find the route between two places by selecting the travel mode. 
+The other is Google street view. 
+Clicking the View street button in the info window will show the street view of the place selected.
+

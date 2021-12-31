@@ -1,0 +1,137 @@
+<!-- "StAuth10244: I Jonghwan Lee, 000811948 certify that this material is my original work. No other person's work has been used without due acknowledgement. I have not made my work available to anyone else." -->
+
+<!-- The Bootstrap was used for the design of this application. -->
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hamilton's Accommodations</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
+        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" 
+        crossorigin="anonymous">
+    <style>
+        #floating-panel {
+            position: absolute;
+            top: 310px;
+            left: 50%;
+            margin-left: -200px;
+            z-index: 5;
+            width: 400px;
+        }
+        #map {
+            height: 800px;
+        }
+        #address {
+            max-width: 60%;
+        }
+    </style>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+        crossorigin="anonymous"></script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbsua4EskTMpwMIvO5vkvTgw35rhCwTfs&callback=initMap"></script>
+    <script src="data.js"></script>
+    <script src="index.js"></script>
+</head>
+
+<body>
+    <main>
+        <div class="container pt-1 pb-4">
+            <div class="p-5 mb-1 text-white bg-dark rounded-3">
+                <div class="container-fluid py-3">
+                    <h1 class="display-5 fw-bold">How about here?</h1>
+                    <p class="col-md-8 fs-4">Are you going to stay in Hamilton? Then, here are some decent and cozy accommodations that will never let you down.</p>
+                </div>
+            </div>
+
+            <div id="floating-panel">
+                <div class="form-floating">
+                    <select class="form-select bg-light" id="start" aria-label="Floating label select example"></select>
+                    <label for="start">Origin</label>
+                </div>
+                <div class="form-floating">
+                    <select class="form-select bg-light" id="end" aria-label="Floating label select example"></select>
+                    <label for="end">Destination</label>
+                </div>
+                <div class="form-floating">
+                    <select class="form-select bg-light" id="mode" aria-label="Floating label select example">
+                        <option value="DRIVING">Driving</option>
+                        <option value="WALKING">Walking</option>
+                        <option value="BICYCLING">Bicycling</option>
+                        <option value="TRANSIT">Transit</option>
+                    </select>
+                    <label for="mode">Mode of Travel</label>
+                </div>
+            </div>
+
+            <div id="map" class="container-fluid mb-1"></div>
+
+            <div class="px-5 mb-3 border border-dark rounded-3">
+                <div class="container-fluid py-3">
+                    <div class="row py-2 align-items-center">
+                        <div class="col-3 px-0">
+                            <h6>Display by types</h6>
+                        </div>
+                        <div class="col">
+                            <div class="btn-group py-2" role="group" aria-label="display by types">
+                                <input type="radio" class="btn-check" name="byTypes" id="btnAll" autocomplete="off"
+                                    checked>
+                                <label class="btn btn-outline-dark" for="btnAll">All</label>
+
+                                <input type="radio" class="btn-check" name="byTypes" id="btnHotel" autocomplete="off">
+                                <label class="btn btn-outline-primary" for="btnHotel">Hotel</label>
+
+                                <input type="radio" class="btn-check" name="byTypes" id="btnMotel" autocomplete="off">
+                                <label class="btn btn-outline-primary" for="btnMotel">Motel</label>
+
+                                <input type="radio" class="btn-check" name="byTypes" id="btnBB" autocomplete="off">
+                                <label class="btn btn-outline-primary" for="btnBB">B&B</label>
+
+                                <input type="radio" class="btn-check" name="byTypes" id="btnCampus" autocomplete="off">
+                                <label class="btn btn-outline-primary" for="btnCampus">Campus</label>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row py-2 align-items-center">
+                        <div class="col-3 px-0">
+                            <h6>Display your current location</h6>
+                        </div>
+                        <div class="col">
+                            <div class="btn-group" role="group" aria-label="my current location">
+                                <input type="radio" class="btn-check" name="currentLocation" id="btnOn"
+                                    autocomplete="off">
+                                <label class="btn btn-outline-primary" for="btnOn">On</label>
+                                <input type="radio" class="btn-check" name="currentLocation" id="btnOff"
+                                    autocomplete="off" checked>
+                                <label class="btn btn-outline-primary" for="btnOff">Off</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row py-2 align-items-center">
+                        <span class="col-3 px-0">
+                            <h6>Find this address</h6>
+                        </span>
+                        <div class="col input-group">
+                            <input type="text" class="form-control" placeholder="71 Main St W, Hamilton, ON"
+                                aria-label="address" aria-describedby="address" id="address">
+                            <button class="btn btn-outline-primary" type="button" id="btnAddress">Submit</button>
+                            <button class="btn btn-outline-danger" type="button" id="btnClear">Clear</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <footer class="pt-3 mt-4 text-muted border-top">
+                &copy; 2021 Jonghwan Lee 000811948
+            </footer>
+        </div>
+    </main>
+</body>
+
+</html>
