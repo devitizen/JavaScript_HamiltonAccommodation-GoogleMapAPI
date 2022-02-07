@@ -1,5 +1,3 @@
-// "StAuth10244: I Jonghwan Lee, 000811948 certify that this material is my original work. No other person's work has been used without due acknowledgement. I have not made my work available to anyone else."
-
 let map, infoWindow, myMarker, geocodeMarker, directionsService, directionsRenderer, panorama;
 let markers = [];
 
